@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Noto+Sans+Masaram+Gondi:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,6 +56,10 @@ body {
     --ring: 164 50% 55%; /* Same as --primary */
 
     --radius: 0.5rem;
+
+    /* Polices */
+    --font-sans: 'Fira Sans', sans-serif;
+    --font-heading: 'Noto Sans Masaram Gondi', sans-serif;
   }
 
   .dark {
@@ -90,7 +96,14 @@ body {
   }
 }
 
+/* Application des polices */
+body {
+  font-family: var(--font-sans);
+}
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
 
 .dotPattern {
   background-image: radial-gradient(rgb(35, 40, 68) 1px, transparent 1px);

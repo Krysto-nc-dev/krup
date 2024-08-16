@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="h-screen w-screen overflow-hidden">
+    <main className="h-screen w-screen overflow-hidden font-sans">
       <section className="h-full w-full relative flex items-center justify-center flex-col">
         {/* Background for light mode */}
         <div
@@ -28,7 +28,7 @@ export default function Home() {
 
         {/* Title */}
         <div className="relative mb-12">
-          <h1 className="bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-7xl md:text-[140px] font-extrabold tracking-tight text-center">
+          <h1 className="bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text text-7xl md:text-[140px] font-heading font-extrabold tracking-tight text-center">
             Krup
           </h1>
           <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-20 blur-xl rounded-lg"></div>

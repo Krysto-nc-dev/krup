@@ -19,6 +19,10 @@ module.exports = withUt({
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Fira Sans', 'sans-serif'], // Applying Fira Sans for body text
+        heading: ['Noto Sans Masaram Gondi', 'sans-serif'], // Applying Noto Sans Masaram Gondi for headings
+      },
       colors: {
         tremor: {
           brand: {
