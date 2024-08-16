@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Image from 'next/image';
+import React from 'react';
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
           className="absolute inset-0 -z-10 h-full w-full bg-white dark:hidden"
           style={{
             background:
-              'radial-gradient(circle at 50% 20%, #edfdf9 40%, #2196f3 100%)',
+              "radial-gradient(circle at 50% 20%, #edfdf9 40%, #2196f3 100%)",
           }}
         ></div>
         {/* Background for dark mode */}
@@ -17,7 +18,7 @@ export default function Home() {
           className="absolute inset-0 -z-10 h-full w-full hidden dark:block"
           style={{
             background:
-              'radial-gradient(circle at 50% 20%, #0b101e 40%, #3f51b5 100%)',
+              "radial-gradient(circle at 50% 20%, #0b101e 40%, #3f51b5 100%)",
           }}
         ></div>
 
@@ -37,11 +38,11 @@ export default function Home() {
         {/* Image */}
         <div className="flex justify-center items-center relative md:mt-[-50px]">
           <Image
-            src={'/assets/preview.jpeg'}
-            alt='banner image'
+            src="/assets/preview.jpeg"
+            alt="banner image"
             height={600}
             width={600}
-            className='rounded-2xl shadow-lg border-4 border-muted dark:border-gray-700'
+            className="rounded-2xl shadow-lg border-4 border-muted dark:border-gray-700"
           />
           <div className="bottom-0 top-[50%] bg-gradient-to-t dark:from-background left-0 right-0 absolute z-10"></div>
         </div>

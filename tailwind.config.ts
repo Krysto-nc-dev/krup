@@ -63,16 +63,16 @@ module.exports = withUt({
             inverted: '#E8EAF6',
           },
           background: {
-            muted: '#1C2833',
-            subtle: '#2C3E50',
-            DEFAULT: '#34495E',
-            emphasis: '#ABB2B9',
+            muted: '#394E5D',  // Even lighter background color for dark mode
+            subtle: '#4A657D', // Slightly lighter than previous
+            DEFAULT: '#5B728A',  // Lightened further for dark mode background
+            emphasis: '#6C8298', // Lightened emphasis background
           },
           border: {
-            DEFAULT: '#566573',
+            DEFAULT: '#7A8B99',  // Lighter border color for dark mode
           },
           ring: {
-            DEFAULT: '#5D6D7E',
+            DEFAULT: '#8A9DAF',  // Lighter ring color for dark mode
           },
           content: {
             subtle: '#D5DBDB',

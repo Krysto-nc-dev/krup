@@ -65,28 +65,28 @@ body {
   .dark {
     --gradient: linear-gradient(to top left, #4bb39a, #2196f3); /* Primary to secondary gradient */
 
-    --background: 240 20% 14%;
+    --background: 240 10% 20%; /* Ajustement pour un gris plus clair en mode sombre */
     --foreground: 240 15% 90%;
 
-    --muted: 240 20% 18%;
+    --muted: 240 10% 25%; /* Ajustement pour un gris légèrement plus clair en mode sombre */
     --muted-foreground: 240 15% 70%;
 
-    --popover: 240 20% 16%;
+    --popover: 240 10% 22%; /* Ajustement pour une teinte plus claire en mode sombre */
     --popover-foreground: 240 15% 90%;
 
-    --card: 240 20% 16%;
+    --card: 240 10% 22%; /* Ajustement pour une teinte plus claire en mode sombre */
     --card-foreground: 240 15% 90%;
 
-    --border: 240 20% 22%;
-    --input: 240 20% 22%;
+    --border: 240 10% 30%; /* Légèrement plus clair pour les bordures en mode sombre */
+    --input: 240 10% 30%; /* Légèrement plus clair pour les champs de saisie en mode sombre */
 
     --primary: 250 100% 75%;
     --primary-foreground: 240 15% 90%;
 
-    --secondary: 240 20% 22%;
+    --secondary: 240 10% 30%; /* Ajustement pour une teinte plus claire en mode sombre */
     --secondary-foreground: 240 15% 90%;
 
-    --accent: 240 20% 22%;
+    --accent: 240 10% 30%; /* Ajustement pour une teinte plus claire en mode sombre */
     --accent-foreground: 240 15% 90%;
 
     --destructive: 0 62.8% 50%;
