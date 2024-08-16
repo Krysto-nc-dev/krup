@@ -1,3 +1,6 @@
+import { ClerkProvider } from '@clerk/nextjs';
+import { dark } from '@clerk/themes';
+import { frFR } from "@clerk/localizations"; 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -16,6 +19,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    <ClerkProvider
+    appearance={{
+      baseTheme: dark,  // Assurez-vous que le thème correspond à vos attentes de style
+    }}
+    localization={frFR}  // Localisation en français
+  >
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider
@@ -28,5 +37,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   )
 }
