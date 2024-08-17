@@ -116,6 +116,8 @@ const AgencyDetails = ({ data }: Props) => {
         createdAt: new Date(),
         updatedAt: new Date(),
         companyEmail: values.companyEmail,
+      connectAccountId: null,
+      customerId: '', // ou une valeur appropriée
         goal: 5, // Si le champ goal est nécessaire, sinon retirez-le
       });
   
