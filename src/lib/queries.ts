@@ -235,32 +235,32 @@ export const upsertAgency = async (agency: Agency) => {
         SidebarOption: {
           create: [
             {
-              name: 'Dashboard',
+              name: 'Tableau de bord',
               icon: 'category',
               link: `/agency/${agency.id}`,
             },
             {
-              name: 'Launchpad',
+              name: 'Demmarage',
               icon: 'clipboardIcon',
               link: `/agency/${agency.id}/launchpad`,
             },
             {
-              name: 'Billing',
+              name: 'Facturation',
               icon: 'payment',
               link: `/agency/${agency.id}/billing`,
             },
             {
-              name: 'Settings',
+              name: 'Paramétres',
               icon: 'settings',
               link: `/agency/${agency.id}/settings`,
             },
             {
-              name: 'Sub Accounts',
+              name: 'Sous-comptes',
               icon: 'person',
               link: `/agency/${agency.id}/all-subaccounts`,
             },
             {
-              name: 'Team',
+              name: 'Equipe',
               icon: 'shield',
               link: `/agency/${agency.id}/team`,
             },
@@ -323,17 +323,17 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
       SidebarOption: {
         create: [
           {
-            name: 'Launchpad',
+            name: 'Demmarage',
             icon: 'clipboardIcon',
             link: `/subaccount/${subAccount.id}/launchpad`,
           },
           {
-            name: 'Settings',
+            name: 'Paramétres',
             icon: 'settings',
             link: `/subaccount/${subAccount.id}/settings`,
           },
           {
-            name: 'Funnels',
+            name: 'sites',
             icon: 'pipelines',
             link: `/subaccount/${subAccount.id}/funnels`,
           },
@@ -343,12 +343,12 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
             link: `/subaccount/${subAccount.id}/media`,
           },
           {
-            name: 'Automations',
+            name: 'Automatisations',
             icon: 'chip',
             link: `/subaccount/${subAccount.id}/automations`,
           },
           {
-            name: 'Pipelines',
+            name: 'Kanban',
             icon: 'flag',
             link: `/subaccount/${subAccount.id}/pipelines`,
           },
@@ -358,7 +358,7 @@ export const upsertSubAccount = async (subAccount: SubAccount) => {
             link: `/subaccount/${subAccount.id}/contacts`,
           },
           {
-            name: 'Dashboard',
+            name: 'Tableau de bord',
             icon: 'category',
             link: `/subaccount/${subAccount.id}`,
           },

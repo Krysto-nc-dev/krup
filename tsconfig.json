@@ -2,28 +2,26 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]  // Cela reste inchangé, car cela semble correct si votre code source est dans le dossier 'src'
     },
-    "target": "es5",
+    "target": "esnext",  // Passer à 'esnext' pour prendre en charge les dernières fonctionnalités ES
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "allowJs": true,  // Laisser 'allowJs' activé si vous avez des fichiers .js dans votre projet
+    "skipLibCheck": true,  // Cela est utile pour ignorer les erreurs de type dans les fichiers de déclaration
+    "strict": true,  // Maintenir la vérification stricte pour améliorer la sécurité du code
+    "forceConsistentCasingInFileNames": true,  // Assurez une casse cohérente des noms de fichiers
+    "noEmit": true,  // Empêche la génération des fichiers de sortie
+    "esModuleInterop": true,  // Facilite l'importation des modules CommonJS
+    "module": "esnext",  // Assurez-vous d'utiliser 'esnext' pour les modules pour une meilleure compatibilité avec les fonctionnalités modernes
+    "moduleResolution": "node",  // Utiliser la résolution de module 'node' pour correspondre à l'environnement Node.js
+    "resolveJsonModule": true,  // Permet l'importation des fichiers JSON
+    "isolatedModules": true,  // Nécessaire pour les environnements comme Babel ou Next.js
+    "jsx": "preserve",  // Préserver le JSX pour être transformé plus tard par Babel ou Next.js
+    "incremental": true,  // Activer la compilation incrémentielle pour améliorer les performances
     "plugins": [
       {
         "name": "next"
