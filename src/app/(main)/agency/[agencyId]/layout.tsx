@@ -15,7 +15,20 @@ type Props = {
   params: { agencyId: string }
 }
 
-const Layout = async ({ children, params }: Props) => {  // Correction du nom en majuscule
+type NotificationWithUser = {
+  id: string
+  title: string
+  message: string
+  createdAt: string
+  User: {
+    id: string
+    role: 'AGENCY_OWNER' | 'AGENCY_ADMIN' | 'OTHER_ROLES'
+    name: string
+    email: string
+  }
+}
+
+const Layout = async ({ children, params }: Props) => {
   const agencyId = await verifyAndAcceptInvitation()
   const user = await currentUser()
 
@@ -34,10 +47,9 @@ const Layout = async ({ children, params }: Props) => {  // Correction du nom en
     return <Unauthorized />
   }
 
-  const notifications = await getNotificationAndUser(agencyId)
+  const notifications: NotificationWithUser[] = await getNotificationAndUser(agencyId) || []
   const allNoti = notifications || []  // Initialisation de `allNoti` avec une valeur par défaut
   
-  // Le contenu principal est toujours retourné si aucune des conditions ci-dessus n'est remplie
   return (
     <div className="h-screen overflow-hidden">
       <Sidebar
@@ -47,7 +59,7 @@ const Layout = async ({ children, params }: Props) => {  // Correction du nom en
       <div className="md:pl-[300px]">
         <InfoBar
           notifications={allNoti}
-          role={allNoti.User?.role}
+          role={allNoti.length > 0 ? allNoti[0].User.role : undefined}
         />
         <div className="relative">
           <BlurPage>{children}</BlurPage>
