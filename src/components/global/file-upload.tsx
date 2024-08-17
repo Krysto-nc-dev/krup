@@ -1,17 +1,17 @@
-import { FileIcon, X } from 'lucide-react'
-import Image from 'next/image'
-import React from 'react'
-import { Button } from '../ui/button'
-import { UploadDropzone } from '@/lib/uploadthing'
+import { FileIcon, X } from 'lucide-react';
+import Image from 'next/image';
+import React from 'react';
+import { Button } from '../ui/button';
+import { UploadDropzone } from '@/lib/uploadthing';
 
 type Props = {
-  apiEndpoint: 'agencyLogo' | 'avatar' | 'subaccountLogo'
-  onChange: (url?: string) => void
-  value?: string
-}
+  apiEndpoint: 'agencyLogo' | 'avatar' | 'subaccountLogo';
+  onChange: (url?: string) => void;
+  value?: string;
+};
 
 const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
-  const type = value?.split('.').pop()
+  const type = value?.split('.').pop();
 
   if (value) {
     return (
@@ -31,7 +31,7 @@ const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
             <a
               href={value}
               target="_blank"
-              rel="noopener_noreferrer"
+              rel="noopener noreferrer"
               className="ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline"
             >
               Voir le PDF
@@ -47,21 +47,21 @@ const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
           Supprimer le logo
         </Button>
       </div>
-    )
+    );
   }
   return (
     <div className="w-full bg-muted/30">
       <UploadDropzone
         endpoint={apiEndpoint}
         onClientUploadComplete={(res) => {
-          onChange(res?.[0].url)
+          onChange(res?.[0].url);
         }}
         onUploadError={(error: Error) => {
-          console.log(error)
+          console.log(error);
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default FileUpload
+export default FileUpload;
