@@ -1,9 +1,10 @@
 'use client';
+
 import { Agency } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import React, { useEffect, useState } from 'react';
 import { NumberInput } from '@tremor/react';
-import { v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'; // Vérifiez que vous importez correctement v4
 
 import { useRouter } from 'next/navigation';
 import {
@@ -55,8 +56,8 @@ type Props = {
 };
 
 const FormSchema = z.object({
-  name: z.string().min(2, { message: 'Le nom de l&apos;agence doit comporter au moins 2 caractères.' }),
-  companyEmail: z.string().min(1),
+  name: z.string().min(2, { message: 'Le nom de l\'agence doit comporter au moins 2 caractères.' }),
+  companyEmail: z.string().email('Veuillez entrer une adresse email valide').min(1, { message: 'L\'email est requis.' }),
   companyPhone: z.string().min(1),
   whiteLabel: z.boolean(),
   address: z.string().min(1),
@@ -97,48 +98,12 @@ const AgencyDetails = ({ data }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof FormSchema>) => {
     try {
-      let newUserData;
-      let custId;
-      if (!data?.id) {
-        const bodyData = {
-          email: values.companyEmail,
-          name: values.name,
-          shipping: {
-            address: {
-              city: values.city,
-              country: values.country,
-              line1: values.address,
-              postal_code: values.zipCode,
-              state: values.zipCode,
-            },
-            name: values.name,
-          },
-          address: {
-            city: values.city,
-            country: values.country,
-            line1: values.address,
-            postal_code: values.zipCode,
-            state: values.zipCode,
-          },
-        };
-
-        const customerResponse = await fetch('/api/stripe/create-customer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(bodyData),
-        });
-        const customerData: { customerId: string } = await customerResponse.json();
-        custId = customerData.customerId;
-      }
-
-      newUserData = await initUser({ role: 'AGENCY_OWNER' });
-      if (!data?.customerId && !custId) return;
-
+      // Initialisation de l'utilisateur
+      const newUserData = await initUser({ role: 'AGENCY_OWNER' });
+  
+      // Ajout de l'agence sans la logique Stripe
       const response = await upsertAgency({
-        id: data?.id ? data.id : v4(),
-        customerId: data?.customerId || custId || '',
+        id: data?.id ? data.id : uuidv4(),
         address: values.address,
         agencyLogo: values.agencyLogo,
         city: values.city,
@@ -151,12 +116,13 @@ const AgencyDetails = ({ data }: Props) => {
         createdAt: new Date(),
         updatedAt: new Date(),
         companyEmail: values.companyEmail,
-        connectAccountId: '',
-        goal: 5,
+        goal: 5, // Si le champ goal est nécessaire, sinon retirez-le
       });
+  
       toast({
         title: 'Agence créée',
       });
+      
       if (data?.id) return router.refresh();
       if (response) {
         return router.refresh();
@@ -170,7 +136,7 @@ const AgencyDetails = ({ data }: Props) => {
       });
     }
   };
-
+  
   const handleDeleteAgency = async () => {
     if (!data?.id) return;
     setDeletingAgency(true);
@@ -240,7 +206,7 @@ const AgencyDetails = ({ data }: Props) => {
                     <FormItem className="flex-1">
                       <FormLabel>Email de l&apos;agence</FormLabel>
                       <FormControl>
-                        <Input readOnly placeholder="Email" {...field} />
+                        <Input placeholder="Email" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -370,7 +336,7 @@ const AgencyDetails = ({ data }: Props) => {
                       await updateAgencyDetails(data.id, { goal: val });
                       await saveActivityLogsNotification({
                         agencyId: data.id,
-                        description: `Mise à jour de l&apos;objectif de l&apos;agence à | ${val} Sous-compte`,
+                        description: `Mise à jour de l&apos;objectif de l&apos;agence à ${val} Sous-compte`,
                         subaccountId: undefined,
                       });
                       router.refresh();
@@ -382,7 +348,7 @@ const AgencyDetails = ({ data }: Props) => {
                 </div>
               )}
               <Button type="submit" disabled={isLoading}>
-                {isLoading ? <Loading /> : 'Enregistrer les informations de l&apos;agence'}
+                {isLoading ? <Loading /> : "Enregistrer les informations de l'agence"}
               </Button>
             </form>
           </Form>
@@ -399,7 +365,7 @@ const AgencyDetails = ({ data }: Props) => {
                 disabled={isLoading || deletingAgency}
                 className="text-red-600 p-2 text-center mt-2 rounded-md hover:bg-red-600 hover:text-white whitespace-nowrap"
               >
-                {deletingAgency ? 'Suppression...' : 'Supprimer l&apos;agence'}
+                {deletingAgency ? "Suppression..." : "Supprimer l'agence"}
               </AlertDialogTrigger>
             </div>
           )}
