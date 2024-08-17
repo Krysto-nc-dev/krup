@@ -45,12 +45,12 @@ const formSchema = z.object({
   country: z.string(),
 })
 
-//CHALLENGE Give access for Subaccount Guest they should see a different view maybe a form that allows them to create tickets
+// DÉFI Donner accès à l'invité du sous-compte : il devrait voir une vue différente, peut-être un formulaire qui lui permet de créer des tickets
 
-//CHALLENGE layout.tsx oonly runs once as a result if you remove permissions for someone and they keep navigating the layout.tsx wont fire again. solution- save the data inside metadata for current user.
+// DÉFI layout.tsx ne s'exécute qu'une seule fois, donc si vous retirez les permissions de quelqu'un et qu'il continue de naviguer, layout.tsx ne se déclenchera plus. Solution : sauvegardez les données dans les métadonnées pour l'utilisateur actuel.
 
 interface SubAccountDetailsProps {
-  //To add the sub account to the agency
+  // Pour ajouter le sous-compte à l'agence
   agencyDetails: Agency
   details?: Partial<SubAccount>
   userId: string
@@ -100,16 +100,16 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
         connectAccountId: '',
         goal: 5000,
       })
-      if (!response) throw new Error('No response from server')
+      if (!response) throw new Error('Aucune réponse du serveur')
       await saveActivityLogsNotification({
         agencyId: response.agencyId,
-        description: `${userName} | updated sub account | ${response.name}`,
+        description: `${userName} | a mis à jour le sous-compte | ${response.name}`,
         subaccountId: response.id,
       })
 
       toast({
-        title: 'Subaccount details saved',
-        description: 'Successfully saved your subaccount details.',
+        title: 'Détails du sous-compte enregistrés',
+        description: 'Les détails de votre sous-compte ont été enregistrés avec succès.',
       })
 
       setClose()
@@ -117,8 +117,8 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
     } catch (error) {
       toast({
         variant: 'destructive',
-        title: 'Oppse!',
-        description: 'Could not save sub account details.',
+        title: 'Oups!',
+        description: "Impossible d'enregistrer les détails du sous-compte.",
       })
     }
   }
@@ -130,12 +130,12 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
   }, [details])
 
   const isLoading = form.formState.isSubmitting
-  //CHALLENGE Create this form.
+
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Sub Account Information</CardTitle>
-        <CardDescription>Please enter business details</CardDescription>
+        <CardTitle>Informations sur le sous-compte</CardTitle>
+        <CardDescription>Veuillez entrer les détails de l'entreprise</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -149,7 +149,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
               name="subAccountLogo"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Account Logo</FormLabel>
+                  <FormLabel>Logo du compte</FormLabel>
                   <FormControl>
                     <FileUpload
                       apiEndpoint="subaccountLogo"
@@ -168,11 +168,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="name"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Account Name</FormLabel>
+                    <FormLabel>Nom du compte</FormLabel>
                     <FormControl>
                       <Input
                         required
-                        placeholder="Your agency name"
+                        placeholder="Nom de votre agence"
                         {...field}
                       />
                     </FormControl>
@@ -186,7 +186,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="companyEmail"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Acount Email</FormLabel>
+                    <FormLabel>Email du compte</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Email"
@@ -205,10 +205,10 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="companyPhone"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Acount Phone Number</FormLabel>
+                    <FormLabel>Numéro de téléphone du compte</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Phone"
+                        placeholder="Téléphone"
                         required
                         {...field}
                       />
@@ -225,11 +225,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
               name="address"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Address</FormLabel>
+                  <FormLabel>Adresse</FormLabel>
                   <FormControl>
                     <Input
                       required
-                      placeholder="123 st..."
+                      placeholder="123 rue..."
                       {...field}
                     />
                   </FormControl>
@@ -244,11 +244,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="city"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>City</FormLabel>
+                    <FormLabel>Ville</FormLabel>
                     <FormControl>
                       <Input
                         required
-                        placeholder="City"
+                        placeholder="Ville"
                         {...field}
                       />
                     </FormControl>
@@ -262,11 +262,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="state"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>State</FormLabel>
+                    <FormLabel>État</FormLabel>
                     <FormControl>
                       <Input
                         required
-                        placeholder="State"
+                        placeholder="État"
                         {...field}
                       />
                     </FormControl>
@@ -280,11 +280,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
                 name="zipCode"
                 render={({ field }) => (
                   <FormItem className="flex-1">
-                    <FormLabel>Zipcpde</FormLabel>
+                    <FormLabel>Code postal</FormLabel>
                     <FormControl>
                       <Input
                         required
-                        placeholder="Zipcode"
+                        placeholder="Code postal"
                         {...field}
                       />
                     </FormControl>
@@ -299,11 +299,11 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
               name="country"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Country</FormLabel>
+                  <FormLabel>Pays</FormLabel>
                   <FormControl>
                     <Input
                       required
-                      placeholder="Country"
+                      placeholder="Pays"
                       {...field}
                     />
                   </FormControl>
@@ -315,7 +315,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
               type="submit"
               disabled={isLoading}
             >
-              {isLoading ? <Loading /> : 'Save Account Information'}
+              {isLoading ? <Loading /> : 'Enregistrer les informations du compte'}
             </Button>
           </form>
         </Form>
