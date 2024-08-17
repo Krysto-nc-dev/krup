@@ -1,5 +1,5 @@
 'use client'
-import { useModal } from '@/providers/modal-provider'
+
 import React from 'react'
 import {
   Dialog,
@@ -8,6 +8,7 @@ import {
   DialogHeader,
 } from '../ui/dialog'
 import { DialogTitle } from '@radix-ui/react-dialog'
+import { useModal } from '@/providers/modal-provider';
 
 type Props = {
   title: string

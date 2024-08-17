@@ -16,11 +16,12 @@ import {
   CommandList,
 } from '../ui/command';
 import Link from 'next/link';
-import { useModal } from '@/providers/modal-provider';
+
 import CustomModal from '../global/custom-modal';
 import SubAccountDetails from '../forms/subaccount-details';
 import { Separator } from '../ui/separator';
 import { icons } from '@/lib/constants';
+import { useModal } from '@/providers/modal-provider';
 
 type Props = {
   defaultOpen?: boolean;
@@ -41,7 +42,7 @@ const MenuOptions = ({
   user,
   defaultOpen,
 }: Props) => {
-  const { setOpen } = useModal();
+  const { setOpen } = useModal()
   const [isMounted, setIsMounted] = useState(false);
 
   const openState = useMemo(() => (defaultOpen ? { open: true } : {}), [defaultOpen]);

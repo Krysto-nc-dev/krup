@@ -1,83 +1,60 @@
-'use client';
+import Unauthorized from '@/app/(main)/unauthorized'
+import BlurPage from '@/components/global/blur-page'
+import InfoBar from '@/components/global/info-bar'
+import Sidebar from '@/components/sidebar'
 
-import { PricesList, TicketDetails } from '@/lib/types';
-import { Agency, Contact, Plan, User } from '@prisma/client';
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  getNotificationAndUser,
+  verifyAndAcceptInvitation,
+} from '@/lib/queries'
+import { currentUser } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
+import React from 'react'
 
-interface ModalProviderProps {
-  children: React.ReactNode;
+type Props = {
+  children: React.ReactNode
+  params: { agencyId: string }
 }
 
-export type ModalData = {
-  user?: User;
-  agency?: Agency;
-  ticket?: TicketDetails[0];
-  contact?: Contact;
-  plans?: {
-    defaultPriceId: Plan;
-    plans: PricesList['data'];
+const Layout = async ({ children, params }: Props) => {
+  const agencyId = await verifyAndAcceptInvitation()
+  const user = await currentUser()
+
+  if (!user) {
+    return redirect('/')
   }
-};
 
-type ModalContextType = {
-  data: ModalData;
-  isOpen: boolean;
-  setOpen: (modal: React.ReactNode, fetchData?: () => Promise<any>) => void;
-  setClose: () => void;
-};
+  if (!agencyId) {
+    return redirect('/agency')
+  }
 
-export const ModalContext = createContext<ModalContextType>({
-  data: {},
-  isOpen: false,
-  setOpen: () => {},
-  setClose: () => {},
-});
+  if (
+    user.privateMetadata.role !== 'AGENCY_OWNER' &&
+    user.privateMetadata.role !== 'AGENCY_ADMIN'
+  ) {
+    return <Unauthorized />
+  }
 
-const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState<ModalData>({});
-  const [showingModal, setShowingModal] = useState<React.ReactNode>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const setOpen = async (
-    modal: React.ReactNode,
-    fetchData?: () => Promise<any>
-  ) => {
-    if (modal) {
-      if (fetchData) {
-        const fetchedData = await fetchData();
-        setData((prevData) => ({ ...prevData, ...fetchedData }));
-      }
-      setShowingModal(modal);
-      setIsOpen(true);
-    }
-  };
-
-  const setClose = () => {
-    setIsOpen(false);
-    setData({});
-  };
-
-  if (!isMounted) return null;
+  const notifications = await getNotificationAndUser(agencyId)
+  const allNoti = notifications || []
 
   return (
-    <ModalContext.Provider value={{ data, setOpen, setClose, isOpen }}>
-      {children}
-      {showingModal}
-    </ModalContext.Provider>
-  );
-};
+    <div className="h-screen overflow-hidden">
+      <Sidebar
+        id={params.agencyId}
+        type="agency"
+      />
+      <div className="md:pl-[300px]">
+        <InfoBar
+          notifications={allNoti} // Assurez-vous que c'est bien un tableau, même vide
+          role={allNoti.length > 0 ? allNoti[0]?.User?.role : undefined}
+        />
+        <div className="relative">
+          <BlurPage>{children}</BlurPage>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-export const useModal = () => {
-  const context = useContext(ModalContext);
-  if (!context) {
-    throw new Error("useModal doit être utilisé dans un fournisseur de modal");
-  }
-  return context;
-};
-
-export default ModalProvider;
+export default Layout
