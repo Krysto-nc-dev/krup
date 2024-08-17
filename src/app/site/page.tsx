@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Home() {
   return (
-    <main className="h-screen w-screen overflow-hidden font-sans">
+   
       <section className="h-full w-full relative flex items-center justify-center flex-col">
         {/* Background for light mode */}
         <div
@@ -47,6 +47,6 @@ export default function Home() {
           <div className="bottom-0 top-[50%] bg-gradient-to-t dark:from-background left-0 right-0 absolute z-10"></div>
         </div>
       </section>
-    </main>
+ 
   );
 }

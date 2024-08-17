@@ -3,6 +3,7 @@ import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import { Plan } from '@prisma/client'
+import AgencyDetails from '@/components/forms/agency-details'
 
 
 const page = async ({
@@ -48,7 +49,7 @@ const page = async ({
     <div className="flex justify-center items-center mt-4">
       <div className="max-w-[950px] p-4 rounded-xl">
         <h1 className="text-2xl text-primary">Créer votre entreprise</h1>
-       
+             <AgencyDetails/>
       </div>
     </div>
   )

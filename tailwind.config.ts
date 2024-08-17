@@ -1,5 +1,5 @@
-import { withUt } from 'uploadthing/tw';
-import colors from 'tailwindcss/colors';
+import { withUt } from 'uploadthing/tw'
+import colors from 'tailwindcss/colors'
 
 module.exports = withUt({
   darkMode: ['class'],
@@ -19,10 +19,6 @@ module.exports = withUt({
       },
     },
     extend: {
-      fontFamily: {
-        sans: ['Fira Sans', 'sans-serif'], // Applying Fira Sans for body text
-        heading: ['Noto Sans Masaram Gondi', 'sans-serif'], // Applying Noto Sans Masaram Gondi for headings
-      },
       colors: {
         tremor: {
           brand: {
@@ -36,7 +32,7 @@ module.exports = withUt({
           background: {
             muted: colors.gray[50],
             subtle: colors.gray[100],
-            DEFAULT: '#edfdf9',  // Background from your charte graphique
+            DEFAULT: colors.white,
             emphasis: colors.gray[700],
           },
           border: {
@@ -47,7 +43,7 @@ module.exports = withUt({
           },
           content: {
             subtle: colors.gray[400],
-            DEFAULT: '#021611',  // Text color from your charte graphique
+            DEFAULT: colors.gray[500],
             emphasis: colors.gray[700],
             strong: colors.gray[900],
             inverted: colors.white,
@@ -63,16 +59,16 @@ module.exports = withUt({
             inverted: '#E8EAF6',
           },
           background: {
-            muted: '#394E5D',  // Even lighter background color for dark mode
-            subtle: '#4A657D', // Slightly lighter than previous
-            DEFAULT: '#5B728A',  // Lightened further for dark mode background
-            emphasis: '#6C8298', // Lightened emphasis background
+            muted: '#1C2833',
+            subtle: '#2C3E50',
+            DEFAULT: '#34495E',
+            emphasis: '#ABB2B9',
           },
           border: {
-            DEFAULT: '#7A8B99',  // Lighter border color for dark mode
+            DEFAULT: '#566573',
           },
           ring: {
-            DEFAULT: '#8A9DAF',  // Lighter ring color for dark mode
+            DEFAULT: '#5D6D7E',
           },
           content: {
             subtle: '#D5DBDB',
@@ -82,82 +78,78 @@ module.exports = withUt({
             inverted: '#17202A',
           },
         },
+        boxShadow: {
+          // light
+          'tremor-input': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          'tremor-card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+          'tremor-dropdown': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+          // dark
+          'dark-tremor-input': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          'dark-tremor-card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+          'dark-tremor-dropdown': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        },
+        borderRadius: {
+          'tremor-small': '0.375rem',
+          'tremor-default': '0.5rem',
+          'tremor-full': '9999px',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: '#4bb39a', // Primary color from your charte graphique
-          foreground: '#ffffff',
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: '#2196f3', // Secondary color from your charte graphique
-          foreground: '#ffffff',
-        },
-        accent: {
-          DEFAULT: '#ef5ce7', // Accent color from your charte graphique
-          foreground: '#ffffff',
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
-          DEFAULT: colors.red[600],
-          foreground: colors.white,
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
-          DEFAULT: colors.gray[400],
-          foreground: colors.gray[600],
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
-          DEFAULT: '#edfdf9',  // Background color from your charte graphique
-          foreground: '#021611',  // Text color from your charte graphique
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
         card: {
-          DEFAULT: '#edfdf9',  // Background color from your charte graphique
-          foreground: '#021611',  // Text color from your charte graphique
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
         },
       },
-      boxShadow: {
-        // light
-        'tremor-input': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        'tremor-card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-        'tremor-dropdown': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-        // dark
-        'dark-tremor-input': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        'dark-tremor-card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-        'dark-tremor-dropdown': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-      },
       borderRadius: {
-        'tremor-small': '0.375rem',
-        'tremor-default': '0.5rem',
-        'tremor-full': '9999px',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
-      border: 'hsl(var(--border))',
-      input: 'hsl(var(--input))',
-      ring: 'hsl(var(--ring))',
-      background: 'hsl(var(--background))',
-      foreground: 'hsl(var(--foreground))',
-      primary: {
-        DEFAULT: 'hsl(var(--primary))',
-        foreground: 'hsl(var(--primary-foreground))',
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+        'automation-zoom-in': {
+          '0%': { transform: 'translateY(-30px) scale(0.2)' },
+          '100%': { transform: 'translateY(0px) scale(1)' },
+        },
       },
-      secondary: {
-        DEFAULT: 'hsl(var(--secondary))',
-        foreground: 'hsl(var(--secondary-foreground))',
-      },
-      destructive: {
-        DEFAULT: 'hsl(var(--destructive))',
-        foreground: 'hsl(var(--destructive-foreground))',
-      },
-      muted: {
-        DEFAULT: 'hsl(var(--muted))',
-        foreground: 'hsl(var(--muted-foreground))',
-      },
-      accent: {
-        DEFAULT: 'hsl(var(--accent))',
-        foreground: 'hsl(var(--accent-foreground))',
-      },
-      popover: {
-        DEFAULT: 'hsl(var(--popover))',
-        foreground: 'hsl(var(--popover-foreground))',
-      },
-      card: {
-        DEFAULT: 'hsl(var(--card))',
-        foreground: 'hsl(var(--card-foreground))',
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'automation-zoom-in': 'automation-zoom-in 0.5s',
       },
     },
   },
@@ -185,4 +177,4 @@ module.exports = withUt({
     },
   ],
   plugins: [require('tailwindcss-animate')],
-});
+})

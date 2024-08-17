@@ -7,7 +7,7 @@ import React from 'react'
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
-      <main className="h-full">
+     <main className="h-screen w-screen overflow-hidden font-sans">
         <Navigation />
         {children}
       </main>

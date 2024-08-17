@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Noto+Sans+Masaram+Gondi:wght@400;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,69 +22,64 @@ body {
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Opera */
 }
-
 @layer base {
   :root {
-    --background: 145 50% 97%; /* #edfdf9 from your charte */
-    --foreground: 240 15% 10%; /* #021611 from your charte */
+    --background: 220 100% 97%;
+    --foreground: 250 15% 25%;
 
-    --primary: 164 50% 55%; /* #4bb39a from your charte */
-    --primary-foreground: 250 15% 95%; /* Adaptation to contrast well with primary */
+    --primary: 240 100% 75%;
+    --primary-foreground: 250 15% 95%;
 
-    --card: 145 50% 97%; /* Same as --background */
-    --card-foreground: 240 15% 10%; /* Same as --foreground */
+    --card: 220 100% 97%;
+    --card-foreground: 250 15% 25%;
 
-    --popover: 145 50% 97%; /* Same as --background */
-    --popover-foreground: 240 15% 10%; /* Same as --foreground */
+    --popover: 240 100% 100%;
+    --popover-foreground: 250 15% 25%;
 
-    --secondary: 207 90% 52%; /* #2196f3 from your charte */
-    --secondary-foreground: 250 15% 95%; /* Adaptation to contrast well with secondary */
+    --secondary: 270 100% 85%;
+    --secondary-foreground: 240 100% 20%;
 
-    --muted: 164 50% 55%; /* #4bb39a as a softer variation for muted */
-    --muted-foreground: 240 15% 40%; /* Darker variation for readability */
+    --muted: 250 100% 95%;
+    --muted-foreground: 250 10% 40%;
 
-    --accent: 300 75% 84%; /* #ef5ce7 from your charte */
-    --accent-foreground: 250 15% 95%; /* Adaptation to contrast well with accent */
+    --accent: 250 100% 90%;
+    --accent-foreground: 240 100% 60%;
 
-    --destructive: 0 84.2% 60.2%; /* #d32f2f */
-    --destructive-foreground: 210 40% 98%; /* #ffffff */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 207 15% 90%; /* Muted variation based on --secondary */
-    --input: 207 15% 90%; /* Muted variation based on --secondary */
-    --ring: 164 50% 55%; /* Same as --primary */
+    --border: 240 15% 90%;
+    --input: 240 15% 90%;
+    --ring: 240 100% 75%;
 
     --radius: 0.5rem;
-
-    /* Polices */
-    --font-sans: 'Fira Sans', sans-serif;
-    --font-heading: 'Noto Sans Masaram Gondi', sans-serif;
   }
 
   .dark {
-    --gradient: linear-gradient(to top left, #4bb39a, #2196f3); /* Primary to secondary gradient */
+    --gradient: linear-gradient(to top left, #7b90d2, #9b7bdf);
 
-    --background: 240 10% 20%; /* Ajustement pour un gris plus clair en mode sombre */
+    --background: 240 20% 14%;
     --foreground: 240 15% 90%;
 
-    --muted: 240 10% 25%; /* Ajustement pour un gris légèrement plus clair en mode sombre */
+    --muted: 240 20% 18%;
     --muted-foreground: 240 15% 70%;
 
-    --popover: 240 10% 22%; /* Ajustement pour une teinte plus claire en mode sombre */
+    --popover: 240 20% 16%;
     --popover-foreground: 240 15% 90%;
 
-    --card: 240 10% 22%; /* Ajustement pour une teinte plus claire en mode sombre */
+    --card: 240 20% 16%;
     --card-foreground: 240 15% 90%;
 
-    --border: 240 10% 30%; /* Légèrement plus clair pour les bordures en mode sombre */
-    --input: 240 10% 30%; /* Légèrement plus clair pour les champs de saisie en mode sombre */
+    --border: 240 20% 22%;
+    --input: 240 20% 22%;
 
     --primary: 250 100% 75%;
     --primary-foreground: 240 15% 90%;
 
-    --secondary: 240 10% 30%; /* Ajustement pour une teinte plus claire en mode sombre */
+    --secondary: 240 20% 22%;
     --secondary-foreground: 240 15% 90%;
 
-    --accent: 240 10% 30%; /* Ajustement pour une teinte plus claire en mode sombre */
+    --accent: 240 20% 22%;
     --accent-foreground: 240 15% 90%;
 
     --destructive: 0 62.8% 50%;
@@ -96,13 +89,13 @@ body {
   }
 }
 
-/* Application des polices */
-body {
-  font-family: var(--font-sans);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 .dotPattern {

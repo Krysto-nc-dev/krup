@@ -5,7 +5,9 @@ type Props = {}
 
 const Pricing = (props: Props) => {
   return (
-    <div>Pricing</div>
+    <section className= "h-full w-full relative flex items-center justify-center flex-col">
+   Tarifs
+  </section>
   )
 }
 

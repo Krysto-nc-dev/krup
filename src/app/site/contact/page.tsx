@@ -5,7 +5,9 @@ type Props = {}
 
 const Contact = (props: Props) => {
   return (
-    <div>Contact</div>
+    <section className= "h-full w-full relative flex items-center justify-center flex-col">
+   Contact
+   </section>
   )
 }
 
