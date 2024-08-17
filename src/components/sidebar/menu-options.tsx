@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '../ui/sheet';
