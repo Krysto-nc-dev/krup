@@ -1,70 +1,61 @@
-import BlurPage from '@/components/global/blur-page';
-import InfoBar from '@/components/global/info-bar';
-import Sidebar from '@/components/sidebar';
-import Unauthorized from '@/components/unauthorized';
+import BlurPage from '@/components/global/blur-page'
+import InfoBar from '@/components/global/info-bar'
+import Sidebar from '@/components/sidebar'
+import Unauthorized from '@/components/unauthorized'
 import {
   getNotificationAndUser,
   verifyAndAcceptInvitation,
-} from '@/lib/queries';
-import { currentUser } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
-import React from 'react';
+} from '@/lib/queries'
+import { currentUser } from  '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
+import React from 'react'
 
 type Props = {
-  children: React.ReactNode;
-  params: { agencyId: string };
-};
+  children: React.ReactNode
+  params: { agencyId: string }
+}
 
-// Assurez-vous que ce type correspond à ce que retourne `getNotificationAndUser`
-type NotificationWithUser = {
-  id: string;
-  title: string;
-  message: string;
-  createdAt: string;
-  User: {
-    id: string;
-    role: string;
-    name: string;
-    email: string;
-  };
-};
-
-const Layout = async ({ children, params }: Props) => {
-  const agencyId = await verifyAndAcceptInvitation();
-  const user = await currentUser();
+const layout = async ({ children, params }: Props) => {
+  const agencyId = await verifyAndAcceptInvitation()
+  const user = await currentUser()
 
   if (!user) {
-    return redirect('/');
+    return redirect('/')
   }
 
   if (!agencyId) {
-    return redirect('/agency');
+    return redirect('/agency')
   }
 
   if (
     user.privateMetadata.role !== 'AGENCY_OWNER' &&
     user.privateMetadata.role !== 'AGENCY_ADMIN'
-  ) {
-    return <Unauthorized />;
-  }
+  )
+    return <Unauthorized />
 
-  const notifications: NotificationWithUser[] = await getNotificationAndUser(agencyId) || [];
-  const allNoti = notifications || [];
+  let allNoti: any = []
+  const notifications = await getNotificationAndUser(agencyId)
+  if (notifications) allNoti = notifications
+
+ 
 
   return (
     <div className="h-screen overflow-hidden">
-      <Sidebar id={params.agencyId} type="agency" />
+      <Sidebar
+        id={params.agencyId}
+        type="agency"
+      />
       <div className="md:pl-[300px]">
         <InfoBar
-          notifications={allNoti}  // Assurez-vous que c'est bien un tableau
-          role={allNoti.length > 0 ? allNoti[0].User.role : undefined}
+          notifications={allNoti}
+          role={allNoti.User?.role}
         />
         <div className="relative">
           <BlurPage>{children}</BlurPage>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default layout
