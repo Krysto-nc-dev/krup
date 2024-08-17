@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as z from 'zod'
-import { v4 } from 'uuid'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+import { v4 } from 'uuid';
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -13,25 +13,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { useRouter } from 'next/navigation'
+} from '@/components/ui/form';
+import { useRouter } from 'next/navigation';
 
-import { Input } from '@/components/ui/input'
+import { Input } from '@/components/ui/input';
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from '@/components/ui/card'
+} from '@/components/ui/card';
 
-import FileUpload from '../global/file-upload'
-import { Agency, SubAccount } from '@prisma/client'
-import { useToast } from '../ui/use-toast'
-import { saveActivityLogsNotification, upsertSubAccount } from '@/lib/queries'
-import { useEffect } from 'react'
-import Loading from '../global/loading'
-import { useModal } from '@/providers/modal-provider'
+import FileUpload from '../global/file-upload';
+import { Agency, SubAccount } from '@prisma/client';
+import { useToast } from '../ui/use-toast';
+import { saveActivityLogsNotification, upsertSubAccount } from '@/lib/queries';
+import { useEffect } from 'react';
+import Loading from '../global/loading';
+import { useModal } from '@/providers/modal-provider';
 
 const formSchema = z.object({
   name: z.string(),
@@ -43,18 +43,13 @@ const formSchema = z.object({
   zipCode: z.string(),
   state: z.string(),
   country: z.string(),
-})
-
-// DÉFI Donner accès à l'invité du sous-compte : il devrait voir une vue différente, peut-être un formulaire qui lui permet de créer des tickets
-
-// DÉFI layout.tsx ne s'exécute qu'une seule fois, donc si vous retirez les permissions de quelqu'un et qu'il continue de naviguer, layout.tsx ne se déclenchera plus. Solution : sauvegardez les données dans les métadonnées pour l'utilisateur actuel.
+});
 
 interface SubAccountDetailsProps {
-  // Pour ajouter le sous-compte à l'agence
-  agencyDetails: Agency
-  details?: Partial<SubAccount>
-  userId: string
-  userName: string
+  agencyDetails: Agency;
+  details?: Partial<SubAccount>;
+  userId: string;
+  userName: string;
 }
 
 const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
@@ -63,9 +58,9 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
   userId,
   userName,
 }) => {
-  const { toast } = useToast()
-  const { setClose } = useModal()
-  const router = useRouter()
+  const { toast } = useToast();
+  const { setClose } = useModal();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -79,7 +74,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
       country: details?.country,
       subAccountLogo: details?.subAccountLogo,
     },
-  })
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -99,50 +94,47 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
         agencyId: agencyDetails.id,
         connectAccountId: '',
         goal: 5000,
-      })
-      if (!response) throw new Error('Aucune réponse du serveur')
+      });
+      if (!response) throw new Error('Aucune réponse du serveur');
       await saveActivityLogsNotification({
         agencyId: response.agencyId,
         description: `${userName} | a mis à jour le sous-compte | ${response.name}`,
         subaccountId: response.id,
-      })
+      });
 
       toast({
         title: 'Détails du sous-compte enregistrés',
         description: 'Les détails de votre sous-compte ont été enregistrés avec succès.',
-      })
+      });
 
-      setClose()
-      router.refresh()
+      setClose();
+      router.refresh();
     } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Oups!',
         description: "Impossible d'enregistrer les détails du sous-compte.",
-      })
+      });
     }
   }
 
   useEffect(() => {
     if (details) {
-      form.reset(details)
+      form.reset(details);
     }
-  }, [details])
+  }, [details, form]);
 
-  const isLoading = form.formState.isSubmitting
+  const isLoading = form.formState.isSubmitting;
 
   return (
     <Card className="w-full">
       <CardHeader>
         <CardTitle>Informations sur le sous-compte</CardTitle>
-        <CardDescription>Veuillez entrer les détails de l'entreprise</CardDescription>
+        <CardDescription>Veuillez entrer les détails de l&apos;entreprise</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               disabled={isLoading}
               control={form.control}
@@ -321,7 +313,7 @@ const SubAccountDetails: React.FC<SubAccountDetailsProps> = ({
         </Form>
       </CardContent>
     </Card>
-  )
+  );
 }
 
-export default SubAccountDetails
+export default SubAccountDetails;
