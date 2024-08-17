@@ -13,7 +13,7 @@ export default clerkMiddleware((auth, req) => {
     searchParams ? `?${searchParams}` : ''
   }`
 
-  // Gestion du sous-domaine
+  // Gestion du sous-domaine pour la redirection 
   const customSubDomain = hostname
     ?.split(`${process.env.NEXT_PUBLIC_DOMAIN}`)
     .filter(Boolean)[0]
