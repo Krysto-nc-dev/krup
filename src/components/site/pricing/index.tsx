@@ -82,7 +82,7 @@ const Pricing = () => {
             }) => (
               <div
                 key={title}
-                className= {twMerge("p-10 rounded-3xl border border-[f1F1F1] shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full", inverse === true && 'border-black bg-black/90 text-white/60')}
+                className= {twMerge("card", inverse === true && 'border-black bg-black/90 text-white/60')}
               >
                 <div className="flex justify-between">
                   <h3 className={twMerge("text-lg font-bold text-black/50 mb-4", inverse === true && "text-white/60")}>

@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const Footer: FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-12">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-gray-700 text-gray-300 py-8 pt-56 h-screen relative ">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Infos de l'entreprise */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4">Krup</h3>
+         
           <p>
             Vous offre les meilleurs outils pour gérer votre entreprise et rester
             en avance sur la concurrence.
@@ -16,7 +16,7 @@ const Footer: FC = () => {
         </div>
 
         {/* Liens de navigation */}
-        <div className="flex flex-col space-y-4">
+        {/* <div className="flex flex-col space-y-4">
           <h4 className="text-lg font-semibold text-primary/80">Liens rapides</h4>
           <ul className="space-y-2">
             <li>
@@ -50,7 +50,7 @@ const Footer: FC = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Mentions légales et autres liens */}
         <div className="flex flex-col space-y-4">
@@ -107,14 +107,14 @@ const Footer: FC = () => {
             className="bg-secondary text-white p-2 rounded-md flex gap-2 items-center transition-all duration-300 ease-in-out relative overflow-hidden hover:bg-secondary/80"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 hover:bg-secondary/90 transition-opacity duration-500"></span>
-            <span className="relative z-10 flex gap-2 items-center text-sm">
+            <span className="relative z-10 flex gap-2 text-sm justify-center  m-auto ">
               Nous contacter
             </span>
           </Link>
         </div>
       </div>
 
-      <div className="border-t border-gray-700 mt-8 pt-4 text-center">
+      <div className="border-t border-gray-700 mt-8 pt-4 text-center absolute bottom-6 left-0 right-0">
         <p className="text-sm text-gray-500">
           &copy; {new Date().getFullYear()} Krup. Tous droits réservés.
         </p>

@@ -6,6 +6,8 @@ import Image from 'next/image';
 import React from 'react';
 import ProductShowcase from '@/components/site/product-show-case';
 import Pricing from '@/components/site/pricing';
+import { Testimonials } from '@/components/testimonials.tsx';
+import CallToAction from '@/components/site/call-to-action';
 
 
 export default function Home() {
@@ -16,8 +18,9 @@ export default function Home() {
       <LogoTicker/>
       <ProductShowcase/>
       <Pricing/>
-      
-      {/* <Footer/> */}
+      <Testimonials/>
+      <CallToAction/>
+      <Footer/>
     </>
   );
 }
