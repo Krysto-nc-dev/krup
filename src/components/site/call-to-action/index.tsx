@@ -9,7 +9,7 @@ const CallToAction = (props: Props) => {
     <section className='bg-gradient-to-b from-white to-[#1e97f3] py-24 overflow-x-clip mt-20'>
       <div className='container'>
         <div className="section-heading relative">
-          <h2 className='section-title'>Inscrivez-vous dès aujourd'hui.</h2>
+          <h2 className='section-title'>Inscrivez-vous dès aujourd&apos;hui.</h2>
           <p className="section-description mt-5">
             Celebrate the joy of accomplishment with an app designed to track your progress and motivate your efforts.
           </p>
