@@ -25,7 +25,7 @@ const Index = (props: Props) => {
   const closeMenuWithDelay = () => {
     setTimeout(() => {
       setIsMenuOpen(false)
-    }, 1500) // Delay of 1.5 seconds before closing the menu
+    }, 800) // Delay 0,8 Seconde before closing the menu
   }
 
   // Variants for menu animation

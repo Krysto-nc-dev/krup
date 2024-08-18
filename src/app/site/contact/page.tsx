@@ -5,7 +5,7 @@ type Props = {}
 
 const Contact = (props: Props) => {
   return (
-    <section className= "h-full w-full relative flex items-center justify-center flex-col">
+    <section className='min-h-screen pt-[160px]'>
    Contact
    </section>
   )
