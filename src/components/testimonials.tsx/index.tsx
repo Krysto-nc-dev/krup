@@ -11,14 +11,14 @@ const testimonials = [
   },
   {
     text:
-      'La productivité de notre équipe a explosé depuis que nous utilisons cette application.',
+      "La productivité de notre équipe a explosé depuis que nous utilisons cette application.",
     imageSrc: '/assets/avatar-2.png',
     name: 'Josh Smith',
     username: '@jjsmith',
   },
   {
     text:
-      'Cette application a complètement transformé ma manière de gérer mes projets et mes échéances.',
+      "Cette application a complètement transformé ma manière de gérer mes projets et mes échéances.",
     imageSrc: '/assets/avatar-3.png',
     name: 'Morgan Lee',
     username: '@morganleewhiz',
@@ -46,21 +46,21 @@ const testimonials = [
   },
   {
     text:
-      'Adopter cette application pour notre équipe a simplifié notre gestion de projet et amélioré la communication à tous les niveaux.',
+      "Adopter cette application pour notre équipe a simplifié notre gestion de projet et amélioré la communication à tous les niveaux.",
     imageSrc: '/assets/avatar-7.png',
     name: 'Jordan Patels',
     username: '@jpatelsdesign',
   },
   {
     text:
-      'Avec cette application, nous pouvons facilement assigner des tâches, suivre les progrès, et gérer les documents au même endroit.',
+      "Avec cette application, nous pouvons facilement assigner des tâches, suivre les progrès, et gérer les documents au même endroit.",
     imageSrc: '/assets/avatar-8.png',
     name: 'Sam Dawson',
     username: '@dawsontechtips',
   },
   {
     text:
-      'Son interface conviviale et ses fonctionnalités robustes répondent parfaitement à nos besoins diversifiés.',
+      "Son interface conviviale et ses fonctionnalités robustes répondent parfaitement à nos besoins diversifiés.",
     imageSrc: '/assets/avatar-9.png',
     name: 'Casey Harper',
     username: '@casey09',
@@ -71,7 +71,7 @@ const firstColumn = testimonials.slice(0, 3)
 const secondColumn = testimonials.slice(3, 6)
 const thirdColumn = testimonials.slice(6, 9)
 
-const TestimonnialsColumn = (props: { className?: string, testimonials: typeof testimonials }) => (
+const TestimonialsColumn = (props: { className?: string, testimonials: typeof testimonials }) => (
   <div
     className={twMerge("flex flex-col gap-6 mt-10", props.className)}
     style={{
@@ -117,9 +117,9 @@ export const Testimonials = () => {
         </p>
         </div>
         <div className="flex justify-center gap-6">
-          <TestimonnialsColumn testimonials={firstColumn} />
-          <TestimonnialsColumn testimonials={secondColumn} className='hidden md:flex' />
-          <TestimonnialsColumn testimonials={thirdColumn} className='hidden lg:flex' />
+          <TestimonialsColumn testimonials={firstColumn} />
+          <TestimonialsColumn testimonials={secondColumn} className='hidden md:flex' />
+          <TestimonialsColumn testimonials={thirdColumn} className='hidden lg:flex' />
         </div>
       </div>
     </section>
