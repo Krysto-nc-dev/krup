@@ -1,11 +1,20 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
-
+import React, { useRef } from 'react'
+import {motion ,useScroll, useTransform} from 'framer-motion'
 type Props = {}
 
 const ProductShowcase = (props: Props) => {
+
+    const sectionRef = useRef(null)
+    const {scrollYProgress} =
+    useScroll({
+        target: sectionRef,
+        offset:['start end', 'end start']
+    })
+    const translateY = useTransform(scrollYProgress, [0,1], [150, -150])
   return (
-    <section className='bg-gradient-to-b from-[#FFFFFF] to-[#1e97f3] py-24 overflow-x-clip'>
+    <section ref={sectionRef} className='bg-gradient-to-b from-[#FFFFFF] to-[#1e97f3] py-24 overflow-x-clip'>
          
          <div className="container">
             <div className='section-heading'>
@@ -19,26 +28,33 @@ const ProductShowcase = (props: Props) => {
             </div>
             <div className="relative">
 
-            <Image
+            <motion.img
              src={"/assets/product-image.png"}
              alt="image du dashboard krup"
              className='mt-10'
              width={1500}
              height={600}
+             
              />
-            <Image
+            <motion.img
              src={"/assets/pyramid.png"}
              alt="image de pyramide"
              className='hidden md:block absolute -right-36 -top-32'
              width={262}
              height={262}
+             style= {{
+                translateY
+             }}
              />
-            <Image
+            <motion.img
              src={"/assets/tube.png"}
              alt="image de tube"
              className='hidden md:block absolute -left-36 bottom-24'
              width={248}
              height={248}
+             style= {{
+                translateY
+             }}
              />
              </div>
          </div>
