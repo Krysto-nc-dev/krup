@@ -58,7 +58,7 @@ const pricingTiers = [
 
 const Pricing = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 bg-white">
       <div className="container">
         <div className="section-heading">
 
