@@ -89,12 +89,14 @@ body {
   }
 }
 
-@layer base {
-
+/* @layer base {
+  * {
+    @apply border;
+  }
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
 .dotPattern {
   background-image: radial-gradient(rgb(35, 40, 68) 1px, transparent 1px);
