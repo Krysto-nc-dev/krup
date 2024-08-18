@@ -1,6 +1,6 @@
 
-import Navigation from '@/components/site/navigation'
-
+import Footer from '@/components/site/footer'
+import Header from '@/components/site/header'
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import {twMerge} from 'tailwind-merge'
@@ -12,8 +12,9 @@ const layout = ({ children }: { children: React.ReactNode }) => {
      <main>
         {/* <Navigation /> */}
       
-        
+        <Header/>
         {children}
+        <Footer/>
       </main>
      
     </ClerkProvider>
