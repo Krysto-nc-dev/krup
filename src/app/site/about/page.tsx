@@ -5,9 +5,9 @@ type Props = {}
 
 const About = (props: Props) => {
   return (
-    <section className= "h-full w-full relative flex items-center justify-center flex-col">
-  A propos
-  </section>
+    <section className='min-h-screen'>
+      A propos
+    </section>
   )
 }
 

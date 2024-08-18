@@ -57,7 +57,7 @@ const MenuOptions = ({
     [defaultOpen]
   )
 
-  
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -84,7 +84,7 @@ const MenuOptions = ({
         )}
       >
         <div>
-          <AspectRatio ratio={16 / 5}>
+          <AspectRatio ratio={16 / 3}>
             <Image
               src={sidebarLogo}
               alt="Logo de la barre latérale"

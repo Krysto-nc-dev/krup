@@ -15,11 +15,15 @@ module.exports = withUt({
       center: true,
       padding: '2rem',
       screens: {
+        
         '2xl': '1400px',
       },
     },
     extend: {
       colors: {
+         primary: '#4bb39a',
+         secondary: '#2196f3',
+         accent: '#ef5ce7',
         tremor: {
           brand: {
             faint: '#E3F2FD',

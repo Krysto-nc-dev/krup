@@ -141,3 +141,18 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #4e7ce1 #0b101e;
 }
+
+@layer components {
+  .btn {
+    @apply  px-4 rounded-md py-1 inline-flex items-center gap-2 justify-center tracking-tight;
+  }
+  .btn-primary {
+    @apply bg-primary text-white ;
+  }
+  .btn-tex {
+    @apply bg-transparent text-black/80 ;
+  }
+  .logo-ticker-image {
+    @apply h-8  w-auto
+  }
+}

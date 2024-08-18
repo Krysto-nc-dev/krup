@@ -64,8 +64,8 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
                 <SheetTitle>Notifications</SheetTitle>
                 <SheetDescription>
                   {(role === 'AGENCY_ADMIN' || role === 'AGENCY_OWNER') && (
-                    <Card className="flex items-center justify-between p-4">
-                      Current Subaccount
+                    <Card className="flex items-center justify-between p-4 mb-3">
+                      Sous-compte actuel
                       <Switch onCheckedChange={handleClick} />
                     </Card>
                   )}
@@ -74,19 +74,19 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
               {allNotifications?.map((notification) => (
                 <div
                   key={notification.id}
-                  className="flex flex-col gap-y-2 mb-2 overflow-x-scroll text-ellipsis"
+                  className="flex flex-col gap-y-2 mb-2 overflow-x-scroll text-ellipsis txt-sm"
                 >
                   <div className="flex gap-2">
                     <Avatar>
                       <AvatarImage
                         src={notification.User.avatarUrl}
-                        alt="Profile Picture"
+                        alt="Photo de profil"
                       />
                       <AvatarFallback className="bg-primary">
                         {notification.User.name.slice(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col text-xs">
                       <p>
                         <span className="font-bold">
                           {notification.notification.split('|')[0]}
@@ -110,7 +110,7 @@ const InfoBar = ({ notifications, subAccountId, className, role }: Props) => {
                   className="flex items-center justify-center text-muted-foreground"
                   mb-4
                 >
-                  You have no notifications
+                  Vous n&apos;avez aucune notification
                 </div>
               )}
             </SheetContent>
