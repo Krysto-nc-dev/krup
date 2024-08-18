@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 const testimonials = [
   {
     text:
-      "En tant que designer expérimenté à la recherche constante d'outils innovants, Krup a immédiatement attiré mon attention.",
+      "En tant que designer expérimenté à la recherche constante d&apos;outils innovants, Krup a immédiatement attiré mon attention.",
     imageSrc: '/assets/avatar-1.png',
     name: 'Jamie Rivera',
     username: '@jamietechguru00',
@@ -25,21 +25,21 @@ const testimonials = [
   },
   {
     text:
-      "J'ai été stupéfait de voir à quelle vitesse nous avons pu intégrer cette application dans notre flux de travail.",
+      "J&apos;ai été stupéfait de voir à quelle vitesse nous avons pu intégrer cette application dans notre flux de travail.",
     imageSrc: '/assets/avatar-4.png',
     name: 'Casey Jordan',
     username: '@caseyj',
   },
   {
     text:
-      "Planifier et exécuter des événements n'a jamais été aussi facile. Cette application m'aide à suivre tous les aspects, garantissant qu'aucun détail ne soit négligé.",
+      "Planifier et exécuter des événements n&apos;a jamais été aussi facile. Cette application m&apos;aide à suivre tous les aspects, garantissant qu&apos;aucun détail ne soit négligé.",
     imageSrc: '/assets/avatar-5.png',
     name: 'Taylor Kim',
     username: '@taylorkimm',
   },
   {
     text:
-      "La personnalisation et les capacités d'intégration de cette application sont de premier ordre.",
+      "La personnalisation et les capacités d&apos;intégration de cette application sont de premier ordre.",
     imageSrc: '/assets/avatar-6.png',
     name: 'Riley Smith',
     username: '@rileysmith1',
