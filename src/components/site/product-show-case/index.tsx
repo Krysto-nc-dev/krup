@@ -8,14 +8,14 @@ const ProductShowcase = (props: Props) => {
     <section className='bg-gradient-to-b from-[#FFFFFF] to-[#1e97f3] py-24 overflow-x-clip'>
          
          <div className="container">
-            <div className='max-w-[540px] mx-auto '>
+            <div className='section-heading'>
 
             <div className="flex justify-center">
 
-            <div className='tag'>Boostez votre productivité</div>
+            <div className='tag '>Boostez votre productivité</div>
             </div>
-            <h2 className="text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#1e97f3] text-transparent bg-clip-text mt-5">Une manière plus efficace de suivre le progrès</h2>
-            <p className='text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E] mt-5'>Transformez vos idées en un site web complet, fonctionnel, et réactif en quelques minutes avec notre solution</p>
+            <h2 className=" section-title mt-5">Une manière plus efficace de suivre le progrès</h2>
+            <p className='section-description mt-5'>Transformez vos idées en un site web complet, fonctionnel, et réactif en quelques minutes avec notre solution</p>
             </div>
             <div className="relative">
 

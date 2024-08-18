@@ -5,6 +5,7 @@ import Footer from '@/components/site/footer'
 import Image from 'next/image';
 import React from 'react';
 import ProductShowcase from '@/components/site/product-show-case';
+import Pricing from '@/components/site/pricing';
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero/>
       <LogoTicker/>
       <ProductShowcase/>
+      <Pricing/>
       
       {/* <Footer/> */}
     </>
