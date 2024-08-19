@@ -2,7 +2,7 @@ import { db } from '@/lib/db'
 import React from 'react'
 import DataTable from './data-table'
 import { Plus } from 'lucide-react'
-import { currentUser } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs/server'
 import { columns } from './columns'
 import SendInvitation from '@/components/forms/send-invitation'
 
@@ -41,7 +41,7 @@ const TeamPage = async ({ params }: Props) => {
       actionButtonText={
         <>
           <Plus size={15} />
-          Add
+          Ajouter
         </>
       }
       modalChildren={<SendInvitation agencyId={agencyDetails.id} />}

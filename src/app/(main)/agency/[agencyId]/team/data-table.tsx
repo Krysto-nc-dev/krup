@@ -49,7 +49,7 @@ export default function DataTable<TData, TValue>({
         <div className="flex items-center py-4 gap-2">
           <Search />
           <Input
-            placeholder="Search Name..."
+            placeholder="Rechercher un nom..."
             value={
               (table.getColumn(filterValue)?.getFilterValue() as string) ?? ''
             }
@@ -65,8 +65,8 @@ export default function DataTable<TData, TValue>({
             if (modalChildren) {
               setOpen(
                 <CustomModal
-                  title="Add a team member"
-                  subheading="Send an invitation"
+                  title="Ajouter un membre à l'équipe"
+                  subheading="Envoyer une invitation"
                 >
                   {modalChildren}
                 </CustomModal>
@@ -120,7 +120,7 @@ export default function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No Results.
+                  Aucun résultat.
                 </TableCell>
               </TableRow>
             )}

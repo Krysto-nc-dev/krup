@@ -56,7 +56,7 @@ export const columns: ColumnDef<UsersWithAgencySubAccountPermissionsSidebarOptio
     },
     {
       accessorKey: 'name',
-      header: 'Name',
+      header: 'Nom',
       cell: ({ row }) => {
         const avatarUrl = row.getValue('avatarUrl') as string
         return (
@@ -66,7 +66,7 @@ export const columns: ColumnDef<UsersWithAgencySubAccountPermissionsSidebarOptio
                 src={avatarUrl}
                 fill
                 className="rounded-full object-cover"
-                alt="avatar image"
+                alt="image d'avatar"
               />
             </div>
             <span>{row.getValue('name')}</span>
@@ -85,7 +85,7 @@ export const columns: ColumnDef<UsersWithAgencySubAccountPermissionsSidebarOptio
 
     {
       accessorKey: 'SubAccount',
-      header: 'Owned Accounts',
+      header: 'Comptes détenus',
       cell: ({ row }) => {
         const isAgencyOwner = row.getValue('role') === 'AGENCY_OWNER'
         const ownedAccounts = row.original?.Permissions.filter(
@@ -97,7 +97,7 @@ export const columns: ColumnDef<UsersWithAgencySubAccountPermissionsSidebarOptio
             <div className="flex flex-col items-start">
               <div className="flex flex-col gap-2">
                 <Badge className="bg-slate-600 whitespace-nowrap">
-                  Agency - {row?.original?.Agency?.name}
+                  Agence - {row?.original?.Agency?.name}
                 </Badge>
               </div>
             </div>
@@ -111,11 +111,11 @@ export const columns: ColumnDef<UsersWithAgencySubAccountPermissionsSidebarOptio
                     key={account.id}
                     className="bg-slate-600 w-fit whitespace-nowrap"
                   >
-                    Sub Account - {account.SubAccount.name}
+                    Sous-compte - {account.SubAccount.name}
                   </Badge>
                 ))
               ) : (
-                <div className="text-muted-foreground">No Access Yet</div>
+                <div className="text-muted-foreground">Pas encore d'accès</div>
               )}
             </div>
           </div>
@@ -124,7 +124,7 @@ export const columns: ColumnDef<UsersWithAgencySubAccountPermissionsSidebarOptio
     },
     {
       accessorKey: 'role',
-      header: 'Role',
+      header: 'Rôle',
       cell: ({ row }) => {
         const role: Role = row.getValue('role')
         return (
@@ -171,7 +171,7 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
             variant="ghost"
             className="h-8 w-8 p-0"
           >
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Ouvrir le menu</span>
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
@@ -181,7 +181,7 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
             className="flex gap-2"
             onClick={() => navigator.clipboard.writeText(rowData?.email)}
           >
-            <Copy size={15} /> Copy Email
+            <Copy size={15} /> Copier l'email
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
@@ -189,8 +189,8 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
             onClick={() => {
               setOpen(
                 <CustomModal
-                  subheading="You can change permissions only when the user has an owned subaccount"
-                  title="Edit User Details"
+                  subheading="Vous pouvez modifier les permissions uniquement lorsque l'utilisateur possède un sous-compte."
+                  title="Modifier les détails de l'utilisateur"
                 >
                   <UserDetails
                     type="agency"
@@ -205,7 +205,7 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
             }}
           >
             <Edit size={15} />
-            Edit Details
+            Modifier les détails
           </DropdownMenuItem>
           {rowData.role !== 'AGENCY_OWNER' && (
             <AlertDialogTrigger asChild>
@@ -213,7 +213,7 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
                 className="flex gap-2"
                 onClick={() => {}}
               >
-                <Trash size={15} /> Remove User
+                <Trash size={15} /> Supprimer l'utilisateur
               </DropdownMenuItem>
             </AlertDialogTrigger>
           )}
@@ -222,15 +222,14 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle className="text-left">
-            Are you absolutely sure?
+            Êtes-vous absolument sûr ?
           </AlertDialogTitle>
           <AlertDialogDescription className="text-left">
-            This action cannot be undone. This will permanently delete the user
-            and related data.
+            Cette action est irréversible. Cela supprimera définitivement l'utilisateur et les données associées.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="flex items-center">
-          <AlertDialogCancel className="mb-2">Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="mb-2">Annuler</AlertDialogCancel>
           <AlertDialogAction
             disabled={loading}
             className="bg-destructive hover:bg-destructive"
@@ -238,15 +237,15 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
               setLoading(true)
               await deleteUser(rowData.id)
               toast({
-                title: 'Deleted User',
+                title: 'Utilisateur supprimé',
                 description:
-                  'The user has been deleted from this agency they no longer have access to the agency',
+                  "L'utilisateur a été supprimé de cette agence et n'a plus accès à celle-ci.",
               })
               setLoading(false)
               router.refresh()
             }}
           >
-            Delete
+            Supprimer
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
