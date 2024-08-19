@@ -69,7 +69,7 @@ const SubaccountPageId = async ({ params }: Props) => {
                   description={
                     <>
                       <div className="flex flex-col">
-                        Total Carts Opened
+                        Nombre total de paniers ouverts
                         <div className="flex gap-2">
                           <ShoppingCart className="text-rose-700" />
                           {/* Remplacer avec la valeur réelle si nécessaire */}
@@ -77,7 +77,7 @@ const SubaccountPageId = async ({ params }: Props) => {
                         </div>
                       </div>
                       <div className="flex flex-col">
-                        Won Carts
+                        Paniers remportés
                         <div className="flex gap-2">
                           <ShoppingCart className="text-emerald-700" />
                           {/* Remplacer avec la valeur réelle si nécessaire */}
@@ -94,20 +94,19 @@ const SubaccountPageId = async ({ params }: Props) => {
           <div className="flex gap-4 flex-col xl:!flex-row">
             <Card className="relative">
               <CardHeader>
-                <CardDescription>Funnel Performance</CardDescription>
+                <CardDescription>Performance des entonnoirs</CardDescription>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground flex flex-col gap-12 justify-between">
                 <SubaccountFunnelChart data={funnelPerformanceMetrics} />
                 <div className="lg:w-[150px]">
-                  Total page visits across all funnels. Hover over to get more
-                  details on funnel page performance.
+                  Nombre total de visites de pages à travers tous les entonnoirs. Passez la souris pour obtenir plus de détails sur les performances des pages de l'entonnoir.
                 </div>
               </CardContent>
               <Contact2 className="absolute right-4 top-4 text-muted-foreground" />
             </Card>
             <Card className="p-4 flex-1">
               <CardHeader>
-                <CardTitle>Checkout Activity</CardTitle>
+                <CardTitle>Activité de commande</CardTitle>
               </CardHeader>
               <AreaChart
                 className="text-sm stroke-primary"
@@ -124,23 +123,23 @@ const SubaccountPageId = async ({ params }: Props) => {
             <Card className="p-4 flex-1 h-[450px] overflow-scroll relative">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  Transition History
+                  Historique des transactions
                   <BadgeDelta
                     className="rounded-xl bg-transparent"
                     deltaType="moderateIncrease"
                     isIncreasePositive={true}
                     size="xs"
                   >
-                    +12.3%
+                    +12,3%
                   </BadgeDelta>
                 </CardTitle>
                 <Table>
                   <TableHeader className="!sticky !top-0">
                     <TableRow>
                       <TableHead className="w-[300px]">Email</TableHead>
-                      <TableHead className="w-[200px]">Status</TableHead>
-                      <TableHead>Created Date</TableHead>
-                      <TableHead className="text-right">Value</TableHead>
+                      <TableHead className="w-[200px]">Statut</TableHead>
+                      <TableHead>Date de création</TableHead>
+                      <TableHead className="text-right">Valeur</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody className="font-medium truncate">
@@ -149,7 +148,7 @@ const SubaccountPageId = async ({ params }: Props) => {
                       <TableCell>-</TableCell>
                       <TableCell>
                         <Badge className="bg-emerald-500 dark:text-black">
-                          Paid
+                          Payé
                         </Badge>
                       </TableCell>
                       <TableCell>-</TableCell>

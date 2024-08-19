@@ -65,19 +65,19 @@ const PipelineValue = ({ subaccountId }: Props) => {
   return (
     <Card className="relative w-full xl:w-[350px]">
       <CardHeader>
-        <CardDescription>Pipeline Value</CardDescription>
+        <CardDescription>Valeur du pipeline</CardDescription>
         <small className="text-xs text-muted-foreground">
-          Pipeline Progress
+          Progression du pipeline
         </small>
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs text-muted-foreground">
-              Closed ${pipelineClosedValue}
+              Fermé {pipelineClosedValue} XPF
             </p>
           </div>
           <div>
             <p className="text-xs text-muted-foreground">
-              Total ${totalPipelineValue + pipelineClosedValue}
+              Total {totalPipelineValue + pipelineClosedValue} XPF
             </p>
           </div>
         </div>
@@ -89,15 +89,14 @@ const PipelineValue = ({ subaccountId }: Props) => {
       </CardHeader>
       <CardContent className="text-sm text-muted-foreground">
         <p className="mb-2">
-          Total value of all tickets in the given pipeline except the last lane.
-          Your last lane is considered your closing lane in every pipeline.
+          Valeur totale de tous les tickets dans le pipeline sélectionné, sauf la dernière colonne. Votre dernière colonne est considérée comme la colonne de clôture dans chaque pipeline.
         </p>
         <Select
           value={selectedPipelineId}
           onValueChange={setselectedPipelineId}
         >
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select a pipeline" />
+            <SelectValue placeholder="Sélectionnez un pipeline" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
