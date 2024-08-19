@@ -98,7 +98,7 @@ const MenuOptions = ({
                 className="w-full my-4 flex items-center justify-between py-8"
                 variant="ghost"
               >
-                <div className="flex items-center text-left gap-2">
+                <div className="flex items-center text-left gap-2 ">
                   <Compass />
                   <div className="flex flex-col">
                     {details.name}
@@ -112,10 +112,10 @@ const MenuOptions = ({
                 </div>
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-80 h-80 mt-4 z-[200]">
+            <PopoverContent className="w-80 h-80 mt-4 z-[200] bg-gray-700">
               <Command className="rounded-lg">
                 <CommandInput placeholder="Rechercher des comptes..." />
-                <CommandList className="pb-16">
+                <CommandList className="pb-16 ">
                   <CommandEmpty>Aucun résultat trouvé</CommandEmpty>
                   {(user?.role === 'AGENCY_OWNER' || user?.role === 'AGENCY_ADMIN') &&
                     user?.Agency && (

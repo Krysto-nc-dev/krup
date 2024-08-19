@@ -1,13 +1,18 @@
-'use client'
-import Image from 'next/image'
-import React from 'react'
-import { motion } from 'framer-motion'
+'use client';
 
-type Props = {}
+import Image from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
 
-const LogoTicker = (props: Props) => {
+const LogoTicker = () => {
+  const { theme } = useTheme(); // Accès au thème actuel
+
+  // Détermination du style de fond en fonction du thème
+  const backgroundColor = theme === 'dark' ? 'bg-gray-500' : 'bg-white';
+
   return (
-    <div className="py-8 md:py-12 bg-white">
+    <div className={`py-8 md:py-12 ${backgroundColor}`}>
       <div className="container">
         <div
           className="flex overflow-hidden"
@@ -28,92 +33,21 @@ const LogoTicker = (props: Props) => {
               repeatType: "loop"
             }}
           >
-            <Image
-              src={'/assets/logo-acme.png'}
-              alt="logo acme"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-quantum.png'}
-              alt="logo quantum"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-echo.png'}
-              alt="logo echo"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-celestial.png'}
-              alt="logo celestial"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-pulse.png'}
-              alt="logo pulse"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-apex.png'}
-              alt="logo apex"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
+            {/* Example images repeated for seamless animation */}
+            <Image src='/assets/logo-acme.png' alt="logo acme" width={100} height={100} />
+            <Image src='/assets/logo-quantum.png' alt="logo quantum" width={100} height={100} />
+            <Image src='/assets/logo-echo.png' alt="logo echo" width={100} height={100} />
+            <Image src='/assets/logo-celestial.png' alt="logo celestial" width={100} height={100} />
+            <Image src='/assets/logo-pulse.png' alt="logo pulse" width={100} height={100} />
+            <Image src='/assets/logo-apex.png' alt="logo apex" width={100} height={100} />
 
             {/* Second set of logos for animation */}
-            <Image
-              src={'/assets/logo-acme.png'}
-              alt="logo acme"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-quantum.png'}
-              alt="logo quantum"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-echo.png'}
-              alt="logo echo"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-celestial.png'}
-              alt="logo celestial"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-pulse.png'}
-              alt="logo pulse"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
-            <Image
-              src={'/assets/logo-apex.png'}
-              alt="logo apex"
-              width={100}
-              height={100}
-              className="logo-ticker-image"
-            />
+            <Image src='/assets/logo-acme.png' alt="logo acme" width={100} height={100} />
+            <Image src='/assets/logo-quantum.png' alt="logo quantum" width={100} height={100} />
+            <Image src='/assets/logo-echo.png' alt="logo echo" width={100} height={100} />
+            <Image src='/assets/logo-celestial.png' alt="logo celestial" width={100} height={100} />
+            <Image src='/assets/logo-pulse.png' alt="logo pulse" width={100} height={100} />
+            <Image src='/assets/logo-apex.png' alt="logo apex" width={100} height={100} />
           </motion.div>
         </div>
       </div>
@@ -121,4 +55,4 @@ const LogoTicker = (props: Props) => {
   )
 }
 
-export default LogoTicker
+export default LogoTicker;

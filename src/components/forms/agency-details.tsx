@@ -56,7 +56,7 @@ type Props = {
 };
 
 const FormSchema = z.object({
-  name: z.string().min(2, { message: 'Le nom de l\'agence doit comporter au moins 2 caractères.' }),
+  name: z.string().min(2, { message: 'Le nom de l\'entreprise doit comporter au moins 2 caractères.' }),
   companyEmail: z.string().email('Veuillez entrer une adresse email valide').min(1, { message: 'L\'email est requis.' }),
   companyPhone: z.string().min(1),
   whiteLabel: z.boolean(),
@@ -122,7 +122,7 @@ const AgencyDetails = ({ data }: Props) => {
       });
   
       toast({
-        title: 'Agence créée',
+        title: 'Entreprise créée',
       });
       
       if (data?.id) return router.refresh();
@@ -134,7 +134,7 @@ const AgencyDetails = ({ data }: Props) => {
       toast({
         variant: 'destructive',
         title: 'Oops !',
-        description: 'Impossible de créer votre agence',
+        description: 'Impossible de créer votre entreprise',
       });
     }
   };
@@ -145,8 +145,8 @@ const AgencyDetails = ({ data }: Props) => {
     try {
       const response = await deleteAgency(data.id);
       toast({
-        title: 'Agence supprimée',
-        description: 'Votre agence et tous les sous-comptes ont été supprimés',
+        title: 'Entreprise supprimée',
+        description: 'Votre entreprise et tous les sous-comptes associée ont été supprimés',
       });
       router.refresh();
     } catch (error) {
@@ -154,7 +154,7 @@ const AgencyDetails = ({ data }: Props) => {
       toast({
         variant: 'destructive',
         title: 'Oops !',
-        description: 'Impossible de supprimer votre agence ',
+        description: 'Impossible de supprimer votre entreprise',
       });
     }
     setDeletingAgency(false);
@@ -164,9 +164,9 @@ const AgencyDetails = ({ data }: Props) => {
     <AlertDialog>
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Informations sur l&apos;agence</CardTitle>
+          <CardTitle>Informations sur l&apos;entreprise</CardTitle>
           <CardDescription>
-            Créons une agence pour votre entreprise. Vous pouvez modifier les paramètres de l&apos;agence plus tard depuis l&apos;onglet des paramètres de l&apos;agence.
+            Créons le profil de votre entreprise. Vous pouvez modifier les paramètres du profil plus tard depuis l&apos;onglet des paramètres de l&apos;entreprise.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -178,7 +178,7 @@ const AgencyDetails = ({ data }: Props) => {
                 name="agencyLogo"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Logo de l&apos;agence</FormLabel>
+                    <FormLabel>Logo de l&apos;entreprise</FormLabel>
                     <FormControl>
                       <FileUpload apiEndpoint="agencyLogo" onChange={field.onChange} value={field.value} />
                     </FormControl>
@@ -195,7 +195,7 @@ const AgencyDetails = ({ data }: Props) => {
                     <FormItem className="flex-1">
                       <FormLabel>Nom de l&apos;agence</FormLabel>
                       <FormControl>
-                        <Input placeholder="Le nom de votre agence" {...field} />
+                        <Input placeholder="Le nom de votre entreprise" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -206,7 +206,7 @@ const AgencyDetails = ({ data }: Props) => {
                   name="companyEmail"
                   render={({ field }) => (
                     <FormItem className="flex-1">
-                      <FormLabel>Email de l&apos;agence</FormLabel>
+                      <FormLabel>Email de l&apos;entreprise</FormLabel>
                       <FormControl>
                         <Input placeholder="Email" {...field} />
                       </FormControl>
@@ -222,7 +222,7 @@ const AgencyDetails = ({ data }: Props) => {
                   name="companyPhone"
                   render={({ field }) => (
                     <FormItem className="flex-1">
-                      <FormLabel>Numéro de téléphone de l&apos;agence</FormLabel>
+                      <FormLabel>Numéro de téléphone de l&apos;entreprise</FormLabel>
                       <FormControl>
                         <Input placeholder="Téléphone" {...field} />
                       </FormControl>
@@ -240,9 +240,9 @@ const AgencyDetails = ({ data }: Props) => {
                   return (
                     <FormItem className="flex flex-row items-center justify-between rounded-lg border gap-4 p-4">
                       <div>
-                        <FormLabel>Agence en marque blanche</FormLabel>
+                        <FormLabel>Entreprise en marque blanche</FormLabel>
                         <FormDescription>
-                          L&apos;activation du mode marque blanche affichera par défaut votre logo d&apos;agence à tous les sous-comptes. Vous pouvez remplacer cette fonctionnalité via les paramètres du sous-compte.
+                          L&apos;activation du mode marque blanche affichera par défaut votre logo d&apos;entreprise à tous les sous-comptes. Vous pouvez remplacer cette fonctionnalité via les paramètres du sous-compte.
                         </FormDescription>
                       </div>
 
@@ -329,7 +329,7 @@ const AgencyDetails = ({ data }: Props) => {
                 <div className="flex flex-col gap-2">
                   <FormLabel>Créer un objectif</FormLabel>
                   <FormDescription>
-                    ✨ Créez un objectif pour votre agence. Au fur et à mesure que votre entreprise se développe, vos objectifs augmentent également, alors n&apos;oubliez pas de relever la barre !
+                    ✨ Créez un objectif pour votre entreprise. Au fur et à mesure que votre entreprise se développe, vos objectifs augmentent également, alors n&apos;oubliez pas de relever la barre !
                   </FormDescription>
                   <NumberInput
                     defaultValue={data?.goal}
@@ -338,7 +338,7 @@ const AgencyDetails = ({ data }: Props) => {
                       await updateAgencyDetails(data.id, { goal: val });
                       await saveActivityLogsNotification({
                         agencyId: data.id,
-                        description: `Mise à jour de l&apos;objectif de l&apos;agence à ${val} Sous-compte`,
+                        description: `Mise à jour de l&apos;objectif de l&apos;entrprise à ${val} Sous-compte`,
                         subaccountId: undefined,
                       });
                       router.refresh();
@@ -350,7 +350,7 @@ const AgencyDetails = ({ data }: Props) => {
                 </div>
               )}
               <Button type="submit" disabled={isLoading}>
-                {isLoading ? <Loading /> : "Enregistrer les informations de l'agence"}
+                {isLoading ? <Loading /> : "Enregistrer les informations de l'entreprise"}
               </Button>
             </form>
           </Form>
@@ -358,10 +358,10 @@ const AgencyDetails = ({ data }: Props) => {
           {data?.id && (
             <div className="flex flex-row items-center justify-between rounded-lg border border-destructive gap-4 p-4 mt-4">
               <div>
-                <div>Zone dangereuse</div>
+                <div>Zone de danger</div>
               </div>
               <div className="text-muted-foreground">
-                La suppression de votre agence ne peut pas être annulée. Cela supprimera également tous les sous-comptes et toutes les données liées à vos sous-comptes. Les sous-comptes n&apos;auront plus accès aux tunnels, contacts, etc.
+                La suppression de votre entreprise ne peut pas être annulée. Cela supprimera également tous les sous-comptes et toutes les données liées à vos sous-comptes. Les sous-comptes n&apos;auront plus accès aux tunnels, contacts, etc.
               </div>
               <AlertDialogTrigger
                 disabled={isLoading || deletingAgency}
@@ -377,7 +377,7 @@ const AgencyDetails = ({ data }: Props) => {
                 Êtes-vous absolument sûr ?
               </AlertDialogTitle>
               <AlertDialogDescription className="text-left">
-                Cette action ne peut pas être annulée. Cela supprimera définitivement le compte de l&apos;agence et tous les sous-comptes associés.
+                Cette action ne peut pas être annulée. Cela supprimera définitivement le compte de l&apos;entreprise et tous les sous-comptes associés.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="flex items-center">

@@ -88,8 +88,8 @@ body {
     --ring: 250 100% 75%;
   }
 }
-
-/* @layer base {
+/* 
+@layer base {
   * {
     @apply border;
   }
