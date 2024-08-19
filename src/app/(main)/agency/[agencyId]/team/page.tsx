@@ -4,7 +4,7 @@ import DataTable from './data-table'
 import { Plus } from 'lucide-react'
 import { currentUser } from '@clerk/nextjs/server'
 import { columns } from './columns'
-import SendInvitation from '@/components/forms/send-invitation'
+import SendInvitation from '../../../../../components/forms/send-invitation'
 
 type Props = {
   params: { agencyId: string }

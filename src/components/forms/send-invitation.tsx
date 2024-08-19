@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import { z } from 'zod'
 import {
@@ -56,19 +57,19 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
       const res = await sendInvitation(values.role, values.email, agencyId)
       await saveActivityLogsNotification({
         agencyId: agencyId,
-        description: `Invited ${res.email}`,
+        description: `Invitation envoyée à ${res.email}`,
         subaccountId: undefined,
       })
       toast({
-        title: 'Success',
-        description: 'Created and sent invitation',
+        title: 'Succès',
+        description: 'Invitation créée et envoyée',
       })
     } catch (error) {
-      console.log(error)
+      console.error('Erreur lors de l\'envoi de l\'invitation:', error)
       toast({
         variant: 'destructive',
-        title: 'Oppse!',
-        description: 'Could not send invitation',
+        title: 'Oups!',
+        description: 'Impossible d\'envoyer l\'invitation',
       })
     }
   }
@@ -78,8 +79,8 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
       <CardHeader>
         <CardTitle>Invitation</CardTitle>
         <CardDescription>
-          An invitation will be sent to the user. Users who already have an
-          invitation sent out to their email, will not receive another
+          Une invitation sera envoyée à l'utilisateur. Les utilisateurs qui ont
+          déjà reçu une invitation à leur email ne recevront pas une autre
           invitation.
         </CardDescription>
       </CardHeader>
@@ -112,24 +113,20 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
               name="role"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>User role</FormLabel>
+                  <FormLabel>Rôle de l'utilisateur</FormLabel>
                   <Select
                     onValueChange={(value) => field.onChange(value)}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select user role..." />
+                        <SelectValue placeholder="Sélectionnez le rôle de l'utilisateur..." />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="AGENCY_ADMIN">Agency Admin</SelectItem>
-                      <SelectItem value="SUBACCOUNT_USER">
-                        Sub Account User
-                      </SelectItem>
-                      <SelectItem value="SUBACCOUNT_GUEST">
-                        Sub Account Guest
-                      </SelectItem>
+                      <SelectItem value="AGENCY_ADMIN">Admin de l'agence</SelectItem>
+                      <SelectItem value="SUBACCOUNT_USER">Utilisateur du sous-compte</SelectItem>
+                      <SelectItem value="SUBACCOUNT_GUEST">Invité du sous-compte</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -140,7 +137,7 @@ const SendInvitation: React.FC<SendInvitationProps> = ({ agencyId }) => {
               disabled={form.formState.isSubmitting}
               type="submit"
             >
-              {form.formState.isSubmitting ? <Loading /> : 'Send Invitation'}
+              {form.formState.isSubmitting ? <Loading /> : 'Envoyer l\'invitation'}
             </Button>
           </form>
         </Form>
