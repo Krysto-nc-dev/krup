@@ -26,7 +26,7 @@ import { useToast } from '../ui/use-toast'
 import { FunnelPage } from '@prisma/client'
 import { FunnelPageSchema } from '@/lib/types'
 import {
-  deleteFunnelePage,
+  // deleteFunnelePage,
   getFunnels,
   saveActivityLogsNotification,
   upsertFunnelPage,
@@ -162,7 +162,7 @@ const CreateFunnelPage: React.FC<CreateFunnelPageProps> = ({
                 {form.formState.isSubmitting ? <Loading /> : 'Enregistrer la Page'}
               </Button>
 
-              {defaultData?.id && (
+              {/* {defaultData?.id && (
                 <Button
                   variant={'outline'}
                   className="w-22 self-end border-destructive text-destructive hover:bg-destructive"
@@ -180,7 +180,7 @@ const CreateFunnelPage: React.FC<CreateFunnelPageProps> = ({
                 >
                   {form.formState.isSubmitting ? <Loading /> : <Trash />}
                 </Button>
-              )}
+              )} */}
               {defaultData?.id && (
                 <Button
                   variant={'outline'}

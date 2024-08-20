@@ -210,7 +210,7 @@ const FunnelSteps = ({ funnel, funnelId, pages, subaccountId }: Props) => {
             </Card>
           ) : (
             <div className="h-[600px] flex items-center justify-center text-muted-foreground">
-              Create a page to view page settings.
+              Créer d'abord une page pour voir l'onglet des paramétres
             </div>
           )}
         </aside>

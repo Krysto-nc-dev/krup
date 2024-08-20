@@ -97,10 +97,10 @@ const ContactPage = async ({ params }: Props) => {
               </TableCell>
               <TableCell>
                 {contact.createdAt 
-                  /* eslint-enable */
+          
                   ? format(typeof contact.createdAt === 'string' ? parseISO(contact.createdAt) : contact.createdAt, 'dd/MM/yyyy')
                   : 'Date inconnue'}
-              /* eslint-disable */
+          
               </TableCell>
               <TableCell className="text-right">
                 {formatTotal(contact.Ticket)}
