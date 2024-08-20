@@ -1,4 +1,4 @@
-import BlurPage from '@/components/global/blurpage'
+import BlurPage from '@/components/global/blur-page'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -63,7 +63,6 @@ const ContactPage = async ({ params }: Props) => {
   }
 
   return (
-    /* eslint-enable */
     <BlurPage>
       <h1 className="text-4xl p-4">Contacts</h1>
       <CraeteContactButton subaccountId={params.subaccountId} />
@@ -98,8 +97,10 @@ const ContactPage = async ({ params }: Props) => {
               </TableCell>
               <TableCell>
                 {contact.createdAt 
+                  /* eslint-enable */
                   ? format(typeof contact.createdAt === 'string' ? parseISO(contact.createdAt) : contact.createdAt, 'dd/MM/yyyy')
                   : 'Date inconnue'}
+              /* eslint-disable */
               </TableCell>
               <TableCell className="text-right">
                 {formatTotal(contact.Ticket)}
@@ -109,7 +110,6 @@ const ContactPage = async ({ params }: Props) => {
         </TableBody>
       </Table>
     </BlurPage>
-    /* eslint-disable */
   )
 }
 
