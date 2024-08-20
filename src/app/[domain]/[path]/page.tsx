@@ -1,31 +1,20 @@
-import { db } from '@/lib/db'
-import { getDomainContent } from '@/lib/queries'
-
-import { notFound } from 'next/navigation'
-import React from 'react'
-
 import FunnelEditor from '@/app/(main)/subaccount/[subaccountId]/funnels/[funnelId]/editor/[funnelPageId]/_components/funnel-editor'
 import EditorProvider from '@/providers/editor/editor-provider'
 import { getDomainContent } from '@/lib/queries'
+import { notFound } from 'next/navigation'
+import React from 'react'
 
-const Page = async ({ params }: { params: { domain: string } }) => {
+const Page = async ({
+  params,
+}: {
+  params: { domain: string; path: string }
+}) => {
   const domainData = await getDomainContent(params.domain.slice(0, -1))
-  if (!domainData) return notFound()
+  const pageData = domainData?.FunnelPages.find(
+    (page) => page.pathName === params.path
+  )
 
-  const pageData = domainData.FunnelPages.find((page) => !page.pathName)
-
-  if (!pageData) return notFound()
-
-  await db.funnelPage.update({
-    where: {
-      id: pageData.id,
-    },
-    data: {
-      visits: {
-        increment: 1,
-      },
-    },
-  })
+  if (!pageData || !domainData) return notFound()
 
   return (
     <EditorProvider
